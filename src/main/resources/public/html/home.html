@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title th:text="${title}">홈</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" th:href="@{/css/home.css}">
+</head>
+<body>
+<div th:replace="layout :: layout_content">
+    <section>
+        <div class="jumbotron">
+            <h1 class="display-4">내 블로그에 오신 것을 환영합니다!</h1>
+            <p class="lead">코딩 지식을 배우고 공유할 수 있는 최고의 허브입니다.</p>
+            <hr class="my-4">
+            <p>최신 블로그 글을 탐색하고, 코딩 챌린지에 참여하며, 토론에 참여해보세요.</p>
+            <a class="btn btn-primary btn-lg" th:href="@{/blog}" role="button">지금 시작하기</a>
+        </div>
+    </section>
+
+    <!-- 추천 섹션 -->
+    <div class="row">
+        <div class="col-md-4">
+            <h2>최신 블로그 글</h2>
+            <ul>
+                <li><a th:href="@{/blog/post1}">Spring Boot 이해하기</a></li>
+                <li><a th:href="@{/blog/post2}">REST API 소개</a></li>
+                <li><a th:href="@{/blog/post3}">Spring에서 WebSocket 사용하기</a></li>
+            </ul>
+        </div>
+        <div class="col-md-4">
+            <h2>인기 코딩 챌린지</h2>
+            <ul>
+                <li><a th:href="@{/challenges/challenge1}">FizzBuzz 챌린지</a></li>
+                <li><a th:href="@{/challenges/challenge2}">회문 검사기</a></li>
+                <li><a th:href="@{/challenges/challenge3}">정렬 알고리즘</a></li>
+            </ul>
+        </div>
+        <div class="col-md-4">
+            <h2>활발한 포럼 주제</h2>
+            <ul>
+                <li><a th:href="@{/forum/topic1}">REST API의 모범 사례</a></li>
+                <li><a th:href="@{/forum/topic2}">자바 vs. 코틀린</a></li>
+                <li><a th:href="@{/forum/topic3}">WebSocket 활용 사례</a></li>
+            </ul>
+        </div>
+    </div>
+</div>
+</body>
+</html>

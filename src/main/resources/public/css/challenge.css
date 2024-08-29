@@ -1,0 +1,62 @@
+/* 코딩 챌린지 페이지 스타일 */
+.challenge-page {
+    margin-top: 2rem;
+}
+
+.challenge-page h1 {
+    font-size: 2.5rem;
+    margin-bottom: 2rem;
+    font-weight: bold;
+}
+
+.challenge-page .challenge-description {
+    margin-bottom: 2rem;
+}
+
+.challenge-page .code-editor {
+    background-color: #2d2d2d;
+    color: #ffffff;
+    padding: 1.5rem;
+    border-radius: 10px;
+    font-family: 'Courier New', Courier, monospace;
+    margin-bottom: 2rem;
+}
+
+.challenge-page .btn-submit {
+    background-color: #28a745;
+    border-color: #28a745;
+    color: #ffffff;
+    border-radius: 5px;
+}
+
+.challenge-page .btn-submit:hover {
+    background-color: #218838;
+    border-color: #1e7e34;
+}
+
+/* 테이블 스타일 */
+.table {
+    margin-top: 2rem;
+    border-collapse: separate;
+    border-spacing: 0;
+    width: 100%;
+}
+
+.table th, .table td {
+    padding: 1rem;
+    text-align: left;
+}
+
+.table thead th {
+    background-color: #007bff;
+    color: #ffffff;
+    border-bottom: 2px solid #0056b3;
+}
+
+.table tbody tr {
+    border-bottom: 1px solid #e0e0e0;
+}
+
+.table tbody tr:hover {
+    background-color: #f1f1f1;
+}

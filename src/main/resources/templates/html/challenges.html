@@ -1,0 +1,18 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+<h1>코딩 챌린지</h1>
+<div class="row">
+    {% for challenge in challenges %}
+    <div class="col-md-4">
+        <div class="card mb-4">
+            <div class="card-body">
+                <h5 class="card-title">{{ challenge.title }}</h5>
+                <p class="card-text">{{ challenge.description }}</p>
+                <a href="/challenges/{{ challenge.id }}" class="btn btn-primary">챌린지 도전</a>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+{% endblock %}

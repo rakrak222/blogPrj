@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title th:text="${title}">내 블로그</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" th:href="@{/css/styles.css}">
+</head>
+<body>
+<!-- 헤더 -->
+<header>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand" th:href="@{/}">내 블로그</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item"><a class="nav-link" th:href="@{/}">홈</a></li>
+                <li class="nav-item"><a class="nav-link" th:href="@{/blog}">블로그</a></li>
+                <li class="nav-item"><a class="nav-link" th:href="@{/challenges}">코딩 챌린지</a></li>
+                <li class="nav-item"><a class="nav-link" th:href="@{/forum}">포럼</a></li>
+                <li class="nav-item"><a class="nav-link" th:href="@{/dashboard}">내 대시보드</a></li>
+                <li class="nav-item"><a class="nav-link" th:href="@{/login}">로그인</a></li>
+            </ul>
+        </div>
+    </nav>
+</header>
+
+<!-- 메인 콘텐츠 -->
+<div class="container mt-4">
+    <div th:insert="~{::section}">
+        <!-- 이 부분에 개별 페이지의 콘텐츠가 삽입됩니다. -->
+    </div>
+</div>
+
+<!-- 푸터 -->
+<footer class="footer bg-light py-3 mt-5">
+    <div class="container">
+        <span class="text-muted">© 2024 내 블로그</span>
+    </div>
+</footer>
+
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

@@ -1,0 +1,55 @@
+/* CSS Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* 기본 설정 */
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f8f9fa;
+    color: #343a40;
+    line-height: 1.6;
+}
+
+/* 링크 스타일 */
+a {
+    color: #007bff;
+    text-decoration: none;
+}
+
+a:hover {
+    color: #0056b3;
+    text-decoration: underline;
+}
+
+/* 공통적인 제목 스타일 */
+h1, h2, h3, h4, h5, h6 {
+    margin-bottom: 1rem;
+    font-weight: 600;
+}
+
+/* 공통적인 텍스트 스타일 */
+p {
+    margin-bottom: 1rem;
+    color: #6c757d;
+}
+
+/* 공통적인 리스트 스타일 */
+ul {
+    margin-bottom: 1rem;
+    padding-left: 20px;
+}
+
+ul li {
+    margin-bottom: 0.5rem;
+}
+
+/* 이미지를 반응형으로 처리 */
+img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    margin: 0 auto;
+}

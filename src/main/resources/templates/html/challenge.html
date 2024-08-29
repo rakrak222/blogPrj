@@ -1,0 +1,23 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+<h1>{{ challenge.title }}</h1>
+<p class="text-muted">난이도: {{ challenge.difficulty }}</p>
+<hr>
+<div>
+  <h4>문제 설명</h4>
+  <p>{{ challenge.description }}</p>
+  <h4>입력</h4>
+  <p>{{ challenge.input_description }}</p>
+  <h4>출력</h4>
+  <p>{{ challenge.output_description }}</p>
+</div>
+<hr>
+<form method="post" action="/challenges/{{ challenge.id }}/submit">
+  <div class="form-group">
+    <label for="code">코드 작성:</label>
+    <textarea id="code" name="code" class="form-control" rows="10"></textarea>
+  </div>
+  <button type="submit" class="btn btn-success">제출</button>
+</form>
+{% endblock %}

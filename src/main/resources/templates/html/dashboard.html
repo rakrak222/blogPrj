@@ -1,0 +1,30 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+<h1>내 대시보드</h1>
+<div class="row">
+    <div class="col-md-4">
+        <h3>내 프로필</h3>
+        <p>이름: {{ user.name }}</p>
+        <p>이메일: {{ user.email }}</p>
+        <a href="/dashboard/edit-profile" class="btn btn-secondary">프로필 수정</a>
+    </div>
+    <div class="col-md-4">
+        <h3>내 블로그 글</h3>
+        <ul>
+            {% for post in user.posts %}
+            <li><a href="/blog/{{ post.id }}">{{ post.title }}</a></li>
+            {% endfor %}
+        </ul>
+        <a href="/blog/new" class="btn btn-primary">새 글 작성</a>
+    </div>
+    <div class="col-md-4">
+        <h3>내 코딩 챌린지</h3>
+        <ul>
+            {% for challenge in user.challenges %}
+            <li><a href="/challenges/{{ challenge.id }}">{{ challenge.title }}</a> - {{ challenge.status }}</li>
+            {% endfor %}
+        </ul>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,27 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+<h1>{{ post.title }}</h1>
+<p class="text-muted">{{ post.author }} | {{ post.date }}</p>
+<hr>
+<div>
+  {{ post.content | safe }}
+</div>
+<hr>
+<h4>댓글</h4>
+<div id="comments">
+  {% for comment in post.comments %}
+  <div class="comment">
+    <p><strong>{{ comment.author }}</strong>: {{ comment.text }}</p>
+  </div>
+  {% endfor %}
+</div>
+<hr>
+<form method="post" action="/blog/{{ post.id }}/comment">
+  <div class="form-group">
+    <label for="comment">댓글 남기기:</label>
+    <textarea id="comment" name="comment" class="form-control"></textarea>
+  </div>
+  <button type="submit" class="btn btn-primary">댓글 작성</button>
+</form>
+{% endblock %}

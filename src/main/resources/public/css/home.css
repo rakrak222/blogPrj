@@ -1,0 +1,53 @@
+/* Jumbotron */
+.jumbotron {
+    background: linear-gradient(135deg, #007bff, #0056b3);
+    color: #ffffff;
+    padding: 4rem 2rem;
+    border-radius: 10px;
+}
+
+.jumbotron h1 {
+    font-size: 3rem;
+    font-weight: bold;
+}
+
+.jumbotron p {
+    font-size: 1.25rem;
+    margin-bottom: 2rem;
+}
+
+.jumbotron .btn {
+    padding: 0.75rem 1.5rem;
+    font-size: 1.25rem;
+}
+
+/* 추천 섹션 */
+.recommendation-section {
+    margin-top: 2rem;
+}
+
+.recommendation-section h2 {
+    font-size: 1.75rem;
+    margin-bottom: 1.5rem;
+    color: #343a40;
+    font-weight: bold;
+}
+
+.recommendation-section ul {
+    list-style: none;
+    padding-left: 0;
+}
+
+.recommendation-section ul li {
+    margin-bottom: 0.75rem;
+}
+
+.recommendation-section ul li a {
+    color: #007bff;
+    font-weight: bold;
+    transition: color 0.3s;
+}
+
+.recommendation-section ul li a:hover {
+    color: #0056b3;
+}

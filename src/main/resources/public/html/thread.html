@@ -1,0 +1,36 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+<h1>{{ thread.title }}</h1>
+<p class="text-muted">작성자: {{ thread.author }} | 작성일: {{ thread.date }}</p>
+<hr>
+<div>
+  {{ thread.content | safe }}
+</div>
+<hr>
+<h4>댓글</h4>
+<div id="replies">
+  {% for reply in thread.replies %}
+  <div class="reply mb-4">
+    <p><strong>{{ reply.author }}</strong>: {{ reply.text }}</p>
+    <small class="text-muted">작성일: {{ reply.date }}</small>
+  </div>
+  {% endfor %}
+</div>
+<hr>
+<form method="post" action="/forum/{{ thread.id }}/reply">
+  <div class="form-group">
+    <label for="reply">댓글 남기기:</label>
+    <textarea id="reply" name="reply" class="form-control" rows="3"></textarea>
+  </div>
+  <button type="submit" class="btn btn-primary">댓글 작성</button>
+</form>
+<button class="btn btn-secondary mt-3" onclick="startLiveChat()">실시간 채팅 시작</button>
+
+<script>
+  function startLiveChat() {
+    // 실시간 채팅 시작 로직 추가
+    alert("실시간 채팅이 시작됩니다.");
+  }
+</script>
+{% endblock %}
