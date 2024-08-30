@@ -1,27 +1,40 @@
-{% extends 'layout.html' %}
-
-{% block content %}
-<h1>{{ post.title }}</h1>
-<p class="text-muted">{{ post.author }} | {{ post.date }}</p>
-<hr>
-<div>
-  {{ post.content | safe }}
-</div>
-<hr>
-<h4>댓글</h4>
-<div id="comments">
-  {% for comment in post.comments %}
-  <div class="comment">
-    <p><strong>{{ comment.author }}</strong>: {{ comment.text }}</p>
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title th:text="${post.title}">게시글</title>
+  <link rel="stylesheet" th:href="@{/css/styles.css}">
+</head>
+<body>
+<div th:replace="layout :: layout_content">
+  <h1 th:text="${post.title}">제목</h1>
+  <p class="text-muted">
+    <span th:text="${post.author}">작성자</span> |
+    <span th:text="${post.date}">작성일자</span>
+  </p>
+  <hr>
+  <div th:utext="${post.content}">
+    <!-- 게시글 내용 -->
   </div>
-  {% endfor %}
-</div>
-<hr>
-<form method="post" action="/blog/{{ post.id }}/comment">
-  <div class="form-group">
-    <label for="comment">댓글 남기기:</label>
-    <textarea id="comment" name="comment" class="form-control"></textarea>
+  <hr>
+  <h4>댓글</h4>
+  <div id="comments">
+    <div class="comment" th:each="comment : ${post.comments}">
+      <p>
+        <strong th:text="${comment.author}">작성자</strong>:
+        <span th:text="${comment.text}">댓글 내용</span>
+      </p>
+    </div>
   </div>
-  <button type="submit" class="btn btn-primary">댓글 작성</button>
-</form>
-{% endblock %}
+  <hr>
+  <form method="post" th:action="@{/blog/{id}/comment(id=${post.id})}">
+    <div class="form-group">
+      <label for="comment">댓글 남기기:</label>
+      <textarea id="comment" name="comment" class="form-control"></textarea>
+    </div>
+    <button type="submit" class="btn btn-primary">댓글 작성</button>
+  </form>
+</div>
+</body>
+</html>

@@ -1,36 +1,49 @@
-{% extends 'layout.html' %}
-
-{% block content %}
-<h1>{{ thread.title }}</h1>
-<p class="text-muted">작성자: {{ thread.author }} | 작성일: {{ thread.date }}</p>
-<hr>
-<div>
-  {{ thread.content | safe }}
-</div>
-<hr>
-<h4>댓글</h4>
-<div id="replies">
-  {% for reply in thread.replies %}
-  <div class="reply mb-4">
-    <p><strong>{{ reply.author }}</strong>: {{ reply.text }}</p>
-    <small class="text-muted">작성일: {{ reply.date }}</small>
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title th:text="${thread.title}">스레드 제목</title>
+  <link rel="stylesheet" th:href="@{/css/styles.css}">
+</head>
+<body>
+<div th:replace="layout :: layout_content">
+  <h1 th:text="${thread.title}">스레드 제목</h1>
+  <p class="text-muted">
+    작성자: <span th:text="${thread.author}">작성자</span> |
+    작성일: <span th:text="${thread.date}">작성일</span>
+  </p>
+  <hr>
+  <div th:utext="${thread.content}">
+    <!-- 스레드 내용 -->
   </div>
-  {% endfor %}
-</div>
-<hr>
-<form method="post" action="/forum/{{ thread.id }}/reply">
-  <div class="form-group">
-    <label for="reply">댓글 남기기:</label>
-    <textarea id="reply" name="reply" class="form-control" rows="3"></textarea>
+  <hr>
+  <h4>댓글</h4>
+  <div id="replies">
+    <div class="reply mb-4" th:each="reply : ${thread.replies}">
+      <p>
+        <strong th:text="${reply.author}">댓글 작성자</strong>:
+        <span th:text="${reply.text}">댓글 내용</span>
+      </p>
+      <small class="text-muted">작성일: <span th:text="${reply.date}">댓글 작성일</span></small>
+    </div>
   </div>
-  <button type="submit" class="btn btn-primary">댓글 작성</button>
-</form>
-<button class="btn btn-secondary mt-3" onclick="startLiveChat()">실시간 채팅 시작</button>
+  <hr>
+  <form method="post" th:action="@{/forum/{id}/reply(id=${thread.id})}">
+    <div class="form-group">
+      <label for="reply">댓글 남기기:</label>
+      <textarea id="reply" name="reply" class="form-control" rows="3"></textarea>
+    </div>
+    <button type="submit" class="btn btn-primary">댓글 작성</button>
+  </form>
+  <button class="btn btn-secondary mt-3" onclick="startLiveChat()">실시간 채팅 시작</button>
 
-<script>
-  function startLiveChat() {
-    // 실시간 채팅 시작 로직 추가
-    alert("실시간 채팅이 시작됩니다.");
-  }
-</script>
-{% endblock %}
+  <script>
+    function startLiveChat() {
+      // 실시간 채팅 시작 로직 추가
+      alert("실시간 채팅이 시작됩니다.");
+    }
+  </script>
+</div>
+</body>
+</html>

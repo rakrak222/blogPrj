@@ -1,0 +1,12 @@
+server:
+  port: 8080
+
+spring:
+  thymeleaf:
+    prefix: classpath:/templates/
+    suffix: .html
+    mode: HTML
+    cache: false
+    encoding: UTF-8
+    content-type: text/html
+    enable-spring-el-compiler: true

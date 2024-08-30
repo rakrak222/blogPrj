@@ -1,18 +1,25 @@
-{% extends 'layout.html' %}
-
-{% block content %}
-<h1>코딩 챌린지</h1>
-<div class="row">
-    {% for challenge in challenges %}
-    <div class="col-md-4">
-        <div class="card mb-4">
-            <div class="card-body">
-                <h5 class="card-title">{{ challenge.title }}</h5>
-                <p class="card-text">{{ challenge.description }}</p>
-                <a href="/challenges/{{ challenge.id }}" class="btn btn-primary">챌린지 도전</a>
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title th:text="${title}">코딩 챌린지</title>
+    <link rel="stylesheet" th:href="@{/css/styles.css}">
+</head>
+<body>
+<div th:replace="layout :: layout_content">
+    <h1>코딩 챌린지</h1>
+    <div class="row">
+        <div class="col-md-4" th:each="challenge : ${challenges}">
+            <div class="card mb-4">
+                <div class="card-body">
+                    <h5 class="card-title" th:text="${challenge.title}">챌린지 제목</h5>
+                    <p class="card-text" th:text="${challenge.description}">챌린지 설명</p>
+                    <a th:href="@{/challenges/{id}(id=${challenge.id})}" class="btn btn-primary">챌린지 도전</a>
+                </div>
             </div>
         </div>
     </div>
-    {% endfor %}
 </div>
-{% endblock %}
+</body>
+</html>

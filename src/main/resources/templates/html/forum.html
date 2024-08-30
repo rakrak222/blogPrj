@@ -1,18 +1,25 @@
-{% extends 'layout.html' %}
-
-{% block content %}
-<h1>포럼</h1>
-<div class="row">
-    {% for category in categories %}
-    <div class="col-md-4">
-        <div class="card mb-4">
-            <div class="card-body">
-                <h5 class="card-title">{{ category.name }}</h5>
-                <p class="card-text">{{ category.description }}</p>
-                <a href="/forum/{{ category.id }}" class="btn btn-primary">주제 보기</a>
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title th:text="${title}">포럼</title>
+    <link rel="stylesheet" th:href="@{/css/styles.css}">
+</head>
+<body>
+<div th:replace="layout :: layout_content">
+    <h1>포럼</h1>
+    <div class="row">
+        <div class="col-md-4" th:each="category : ${categories}">
+            <div class="card mb-4">
+                <div class="card-body">
+                    <h5 class="card-title" th:text="${category.name}">카테고리 이름</h5>
+                    <p class="card-text" th:text="${category.description}">카테고리 설명</p>
+                    <a th:href="@{/forum/{id}(id=${category.id})}" class="btn btn-primary">주제 보기</a>
+                </div>
             </div>
         </div>
     </div>
-    {% endfor %}
 </div>
-{% endblock %}
+</body>
+</html>
